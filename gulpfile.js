@@ -32,6 +32,9 @@ gulp.task('sass', function () {
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./build/css'));
 });
+gulp.task('sass:watch', function () {
+  gulp.watch('./src/sass/**/*.sass', ['sass']);
+});
 
 gulp.task('styles', styles);
 gulp.task('scripts', scripts);
