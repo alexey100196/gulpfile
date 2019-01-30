@@ -6,7 +6,7 @@ var sass = require('gulp-sass');
 // const watch = require('gulp-watch');
 
 
-function styles () {
+function styles() {
   return gulp.src('./src/css/**/*.css')
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
