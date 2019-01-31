@@ -21,17 +21,26 @@ function styles() {
 function scripts() {
 
 }
-
+// 
 function watch() {
-  gulp.watch('./src/css/**/*.css', styles);
+  // gulp.watch('./src/**/*.css', styles);
+  gulp.watch('./src/sass/**/*.sass', ['sass']);
 }
 
 gulp.task('sass', function () {
   console.log('sass done')
   gulp.src('./src/sass/**/*.sass')
     .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
+    .pipe(cleanCSS({
+      level: 2
+    }))
     .pipe(gulp.dest('./build/css'));
 });
+// 
 gulp.task('sass:watch', function () {
   gulp.watch('./src/sass/**/*.sass', ['sass']);
 });
@@ -39,5 +48,5 @@ gulp.task('sass:watch', function () {
 gulp.task('styles', styles);
 gulp.task('scripts', scripts);
 gulp.task('watch', watch);
-// gulp.task('sass', sass);
+
 
